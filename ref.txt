@@ -141,17 +141,43 @@ export const test = (req,res)=>{
 		});
 	}
 -Inside api, create folder "routes"
-- Inside routes, create "user.routes.js"
+- Inside routes, create "user.routes.js" //make sure to add .js in these case
 - Inside user.route.js
 import express
-import test from "......user.controller.js"
+import test from "......user.controller.js" //make sure to add .js in these case
 const router = express.Router();
 router.get('/test',test);
 export default router
 
 -Inside api/index.js
-import userRouter from ".routes/user.route.js"
+import userRouter from ".routes/user.route.js" //make sure to add .js in these case
 app.use("/api/user",userRoutes);
 -add changes to github
 
+8. Create signup API 
+=> npm i bcryptjs
+-Inside controllers, create auth.controller.js
+-export const signup = async (req,res)=>{
+	const { username,email,passeord} = req.body;
+	const hashedPassword = bcryp.hashSync(password,10);
+	const newUser = new User({username,email,password:hashedPassword});
+	try{
+	await newUser.save() //this operation may take time to perform
+	res.status(201).json("User create successfully"); 
+	}catch(error){
+	res.status(500).json(error.message); 
+}}
+
+
+-Inside routes, create auth.route.js
+router.post("/sign-up",signup)
+
+Inside api,index.js
+app.use('/api/auth',authRouter);
+- do to insomnia.rest for testing api,download .exe file and open it
+-Create collection "mern-estate", inside that create folder "auth" and create http request -signup
+-POST request, send username,email,password in body
+Inside index.js, add
+app.use(express.json()) //used to allow json as input to server
+-commit the changes
 
