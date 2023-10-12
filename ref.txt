@@ -1,0 +1,82 @@
+1.Install React JS and Tailwind CSS
+- Create project Folder "RealEstate"
+-open terminal inside "RealEstate"
+=> npm create vite@latest client // react,javascript+swc
+=> cd client
+=> npm i
+=> npm run dev
+- In google, search "tailwind vite"
+-go to install tailwind css with vite //using react command-follow all the steps
+(https://tailwindcss.com/docs/guides/vite)
+-Delete app.css file // will not be using it
+-delete public/vite.svg
+-In app.jsx, replace the code and just keep the basic template
+-Initilize git
+Create a .gitignore file, and add node_modules
+=>git init
+=> git add .
+=> git commit -m "create reactjs and tailwin CSS"
+-Go to github.com and login
+-create anew repository (mern-estate,public,
+=> git remote add origin https://github.com/......git
+=>git branch -M branchName
+=> git push -u origin branchName
+
+2.Create pages and routes
+-Inside client/src, create folder "Pages"
+-Inside pages, create "About.jsx",SignIn.jsx,Profile.jsx,SignUp.jsx,Home.jsx along with basic template inside each
+=>npm i react-router-dom
+=>Inside App.jsx
+import Browser router,Routes,Route from 'react-router-dom'
+App(){
+return <BrowserRouter>
+	<Routes>
+		<Route path="/" element={<Home/>}>
+		<Route path="/sign-in" element={<SignIn/>}
+		<Route path="/sign-up" element={<SignUp/>}
+		<Route path="/profile" element={<Proile/>}
+		<Route path="/about" element={<About/>}
+	<Routes>
+</BrwoserRouter>
+-test the changes, run the app and commit the changes and push them
+
+3.Create Header Component
+-Inside src, create folder "components"
+-Inside components, create "Header.jsx"
+-Import Header.jsx in App.jsx before Routes
+- Update Header.jsx -
+return <header></header>
+=> npm i react-icons
+-push changes to github
+
+4.Create and run the server
+Inside "RealEstate", create new folder "api"
+=> cd .. (go to root folder)
+=> npm init -y
+- Package.json is created. Inside that, add
+"main":"index.js", //already exists
+"type":"module", //add as new command
+- Inside api, Create a file "index.js"
+=> npm i express
+-In index.js
+import express from "express";
+const app = express();
+app.listen(3000, () => {
+  console.log("Server is running on port 3000!!");
+}); 
+=> node api/index
+=> npm i nodemon
+- Inside package.json, add
+"scripts":{
+	"dev":"nodemon api/index.js,
+	"start":"node api/index.js,
+}
+=> npm run dev
+- add changes to github
+=>cd client
+=>git mv .git ../
+- move .gitignore file in client to "RealEstate"
+
+
+
+
