@@ -77,6 +77,36 @@ app.listen(3000, () => {
 =>git mv .git ../
 - move .gitignore file in client to "RealEstate"
 
+5.Connect to Database
+=>cd .. // go to root folder
+=> npm i mongoose
+- go to mongodb.com and sign in
+- Create new database
+- Create databsefree,name the cluster "mern-estate"
+- Provide user name and password, cloud env, add ip address of your computer //while creating password, dont use special characters, while adding ip, if there is error later, go to network access and add allow from anywhere option
+- Click on connect,=> drivers=>Copy the code at "add your connection string into your application code"
+"mongodb+srv://adarshjoseph12:2021Aj!@#@mern-estate.qimk5y7.mongodb.net/?retryWrites=true&w=majority" 
+=> npm i dotenv
+- In root folder, create .env
+Inside  .env
+MONGO = "Copied C0de" //copied string contains the credentials so we have to hide it from public
+
+-Inside api/index.js,add
+import mongoose
+import dotenv
+dotenv.config()
+mongoose.connect(process.env.MONGO).then(()=>{
+console.log("Connected")
+}).catch((err)=>{
+	console.log(err);
+})
+-In .gitignore, add .env 
+-add changes to github
+
+
+
+
+
 
 
 
