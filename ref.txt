@@ -132,6 +132,26 @@ const User = mongoose.model("User", userSchema);
 export default User;
 -Change pushes to git
 
+7. Create a text api route
+-Inside api, create folder "controllers"
+Inside controllers, create file user.controller.js
+export const test = (req,res)=>{
+	res.json({
+		message:"Hello World"
+		});
+	}
+-Inside api, create folder "routes"
+- Inside routes, create "user.routes.js"
+- Inside user.route.js
+import express
+import test from "......user.controller.js"
+const router = express.Router();
+router.get('/test',test);
+export default router
 
+-Inside api/index.js
+import userRouter from ".routes/user.route.js"
+app.use("/api/user",userRoutes);
+-add changes to github
 
 
